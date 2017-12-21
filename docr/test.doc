@@ -1,0 +1,13 @@
+This is a test file. It sould be represented by text and `Code` *bold* _italic_ and many $math$.
+Here is more text to add to the file. Lets see if it will work????
+
+$$ \frac{2\pi}{4\epsilon_0} $$
+
+How about this new paragraph. Is is read properly.
+What about now!
+
+Lets ad some *Bold and _italic text_* How does it work??
+
+What if we attempt to add unicode support?? \u265e or maby \u265e or lets try &#9822; These should all be chess peices.
+
+<cpp::function void myfunc> here is some description of the function!

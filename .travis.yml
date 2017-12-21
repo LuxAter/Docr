@@ -1,0 +1,22 @@
+sudo: true
+
+language:
+  - python
+
+python:
+  - "3.5"
+  - "3.6"
+  - "pypy3"
+
+install:
+  - pip install .
+  - pip install -r requirements.txt
+
+script:
+  - py.test
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) || echo "CodeCov Error"
+
+notifications:
+  email: false
