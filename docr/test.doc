@@ -1,13 +1,30 @@
-This is a test file. It sould be represented by text and `Code` *bold* _italic_ and many $math$.
-Here is more text to add to the file. Lets see if it will work????
+This is a sample text file. It sould just include text, and nothing else. If
+It includes anything other than one text object we have an issue.
 
-$$ \frac{2\pi}{4\epsilon_0} $$
+Lets try with a second paragraph. Will this still work? What if we start
+adding new things... Like Code! `This is inline code!` Followed by some more text.
 
-How about this new paragraph. Is is read properly.
-What about now!
+Lets try adding some more complex things like *Bold text _with italic inside it _ Followed by more bold*. How did that all work?? $This is inline math$
 
-Lets ad some *Bold and _italic text_* How does it work??
+$$\frac{2\pi}{4}$$
 
-What if we attempt to add unicode support?? \u265e or maby \u265e or lets try &#9822; These should all be chess peices.
+- This is a list
+- Still part of the list
+- Final entry
+- Mabye we can try a sub list?
+  - First sub list
+  - Second??
 
-<cpp::function void myfunc> here is some description of the function!
+That was cool! Now lets try some enumeration...
+
+1) This is the first
+2) This is the second
+3) THis is the third
+10) This is some more text!!
+
+Maby we can do roman??? NO! that seems hard
+
+# How about a title? #
+And now some text to fill in the following paragraph!
+
+## What about a sub title ##

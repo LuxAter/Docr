@@ -1,4 +1,3 @@
-import syntaxtree as st
 from parser import Parser
 from lexer import Lexer
 
@@ -48,8 +47,12 @@ def pfile(mytree):
 
 
 def main():
-    mytree = Lexer.analyze("test.doc")
     from pprint import pprint
+    lexer = Lexer()
+    mytree = lexer.analyze("test.doc")
+    parser = Parser()
+    #  pprint(mytree)
+    mytree = parser.parse(mytree)
     pprint(mytree)
     #  pfile(mytree)
 
