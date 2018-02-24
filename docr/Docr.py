@@ -1,5 +1,6 @@
 from parser import Parser
 from lexer import Lexer
+from generators import html
 
 
 def pfile(mytree):
@@ -54,8 +55,9 @@ def main():
     #  pprint(mytree)
     mytree = parser.parse(mytree)
     pprint(mytree)
-    #  pfile(mytree)
-
+    gen = html.Generator()
+    gen.gen_file(mytree)
+    # pfile(mytree)
 
 
 if __name__ == "__main__":
