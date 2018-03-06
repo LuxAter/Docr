@@ -5,8 +5,8 @@ between character groups.
 
 ## Sub Sections ##
 
-- Bulleted lists
-- That are able to handel sub lists, or multiple paragraphs for every entry
+-  Bulleted lists
+-  That are able to handel sub lists, or multiple paragraphs for every entry
     based on the preceading whitespace.
     1. Numbered lists
     2. That are automatically enumerated.

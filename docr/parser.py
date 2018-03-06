@@ -5,14 +5,34 @@ from structure import *
 
 class Parser():
     def __init__(self):
-        self.data = list()
+        self.tu = None
+
+    def parse_block(self, i, lines, delim, type, flags, meta_data=False):
+        if lines[i].strip().startswith(delim) and not any(flags):
+            elem = Element('', type)
+            if meta_data is True or meta_data == 'str':
+                elem.meta_data = [lines[i].strip()[len(delim):].strip()]
+            elif meta_data == 'list':
+                elem.meta_data = lines[i].strip()[len(delim):].strip().split()
+            i+= 1
+            while i < len(lines) and lines[i].strip().endswith(delim) is False:
+                elem.data += lines[i]
+                i += 1
+            i += 1
+            return i, [elem]
+        return i, []
 
     def parse_element(self, element):
-        if isinstance(element.data, list) is True:
-            return
+        if isinstance(element.data, list):
+            print(element)
+            for elem in element.data:
+                self.parse_element(elem)
+            return False
+        in_element = Element(element.data, element.type, element.meta_data)
         string = element.data
         lines = string.splitlines()
         element.data = [Element('', Type.TEXT)]
+        sub_elements = False
         special_par = False
         special_open = False
         indent_clear = 0
@@ -24,14 +44,18 @@ class Parser():
                     element.append(Element('', Type.TEXT))
                     indent_clear = 0
                     special_open = False
+                    sub_elements = True
                 elif special_open is False:
                     element.append(Element('', Type.TEXT))
                     indent_clear = 0
                     special_open = False
+                    sub_elements = True
                 else:
                     element.data[-1].data += "\n"
 
             else:
+                print(self.parse_block(i, lines, '$$$', Type.MATH, [False], 'list'))
+                print(self.parse_block(i, lines, '```', Type.CODE, [False], 'str'))
                 if line.strip().startswith('$$$') and special_par is False:
                     special_par = True
                     element.data[-1].type = Type.MATH
@@ -45,11 +69,11 @@ class Parser():
                     element.data[-1].meta_data = line.strip()[3:].split()
                 elif line.strip().endswith('```') and special_par is True:
                     special_par = False
-                elif line.strip().endswith(':') and special_par is False:
+                elif line.strip().endswith(':') and special_par is False and special_open is False:
                     special_open = True
                     element.data[-1].type = Type.DEFINITION
                     element.data[-1].meta_data = [line.strip()[:-1]]
-                elif line.strip().startswith('!!!') and special_par is False:
+                elif line.strip().startswith('!!!') and special_par is False and special_open is False:
                     special_open = True
                     element.data[-1].type = Type.ADMONITON
                     element.data[-1].meta_data = [line.strip()[3:].strip()]
@@ -59,7 +83,16 @@ class Parser():
                         indent_clear = len(line) - len(line.lstrip())
                     element.data[-1].data += line[indent_clear:] + '\n'
 
-        print(element.print())
+        if len(element.data) == 1 and element.data[0] == in_element:
+            element.data = in_element.data
+            return False
+
+        for elem in element.data:
+            if elem.type not in (Type.MATH, Type.CODE):
+                while self.parse_element(elem):
+                    pass
+        # print(element.print())
+        return sub_elements
 
     # def parse_paragraph(self, string, indent=0):
     #     def check_par(par, type=None):
@@ -109,4 +142,5 @@ class Parser():
     #
 
     def parse(self, string):
-        self.data = self.parse_element(Element(string, Type.TU))
+        self.tu = Element(string, Type.TU)
+        self.parse_element(self.tu)

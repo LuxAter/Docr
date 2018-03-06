@@ -37,11 +37,15 @@ class Element():
                 return True
         return False
 
+    def __eq__(self, other):
+        return (self.data == other.data) and (self.type == other.type) and (
+            self.meta_data == other.meta_data)
+
     def __repr__(self):
         return '(' + repr(self.type) + ', ' + repr(
             self.meta_data) + ', ' + repr(self.data) + ')'
 
-    def print(self, indent=0):
+    def print(self, indent=0, align=False):
         ret = (' ' * indent) + '(' + repr(self.type) + ', '
         length = len(ret)
         new = False
@@ -53,19 +57,23 @@ class Element():
                 ret += '[\n'
                 for item in self.data:
                     if isinstance(item, Element):
-                        ret += item.print(indent + length + 2) + '\n'
+                        if align is False:
+                            ret += item.print(indent + 2, align) + '\n'
+                        else:
+                            ret += item.print(length + 3, align) + '\n'
                     else:
                         ret += (' ' * indent) + repr(item) + '\n'
-                ret += (' '* indent) + ']'
+                        if align is False:
+                            ret += (' ' * (indent + 2)) + repr(item) + '\n'
+                        else:
+                            ret += (' ' * (length + 2)) + repr(item) + '\n'
+                ret += (' ' * indent) + ']'
                 new = True
             else:
                 ret += repr(self.data)
         else:
             ret += repr(self.data)
-        if new:
-            ret += (' ' * indent) + ')'
-        else:
-            ret += ')'
+        ret += ')'
         return ret
 
     def append(self, value, cond=True):
