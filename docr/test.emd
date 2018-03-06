@@ -1,0 +1,51 @@
+# Sections #
+
+Text that can be split into paragraphs, based on if there is a blank line
+between character groups.
+
+## Sub Sections ##
+
+- Bulleted lists
+- That are able to handel sub lists, or multiple paragraphs for every entry
+    based on the preceading whitespace.
+    1. Numbered lists
+    2. That are automatically enumerated.
+
+Some ability to do **Bold** text and *italic* or _italic_ text would be good,
+aswell as combinations of the two. Also lets add in `inline` code, and $math$.
+there is always some fun in having math workng. Then there sould also be outof
+line
+
+```cpp
+#include <iostream>
+```
+
+code that can be based on the laguages specivied. Aswll as outof line math
+$$math equations and stuff$$.
+
+$$$
+Here is some inline math!
+
+\frac{2b}{4c} = 92
+$$$
+
+In the future I would like to implement definition lists symbolized by adding a
+colon to the end of a line, and the following indented lines are the
+definition.
+
+Definition:
+    This is some example of what a definition might look like. Where it begins
+    by the title, then a colon, followed by the definition in subsequent lines.
+
+    Here I want to test multi-paragraph definitions. Will it work? I doubt it.
+
+Everything sould be nestable, so that anything can have anything else nested
+within it.
+
+!!! Warning
+    I would also like to implement the use of Admonitons. These must be
+    specified by `!!!`, and must be the first thing in the line. Then followed
+    by an optional title. On subsequent lines will be the content.
+
+    This should also now have the ability to be multiple paragraphs.
+
