@@ -1,16 +1,5 @@
 This is just text. There sould only be one paragraph element, and nothing
-beyond that.
+beyond that. *italic*. **bold**. Lets try adding a definition list with sub
+elements.
 
-Now I have added a second paragraph. Will everything still work?
-
-Let try making it a bit more complicated with a Definition!
-
-Testing:
-    THis is a test of the definition list. Everything should work as intended.
-    Even if I want to implement multiple paragraphs.
-
-    Like So. This should all be part of the testing definition, but in a new
-    text object. What about sub definitions???
-
-    Sub:
-        Defs are broken :(
+Lets try some nested bold/italics **outer bold *ital bold* bold lonlye**.

@@ -29,12 +29,13 @@ class Element():
             self.meta_data = list()
         self.type = type
 
-    def __nonzero__(self):
+    def __bool__(self):
         if self.data is False:
             return False
-        for elem in self.data:
-            if elem is True:
-                return True
+        if isinstance(self.data, str):
+            return bool(self.data)
+        elif isinstance(self.data, list):
+            return True
         return False
 
     def __eq__(self, other):
@@ -82,3 +83,14 @@ class Element():
         else:
             if self.data and self.data[-1]:
                 self.data.append(value)
+            elif self.data:
+                self.data[-1] = value
+            else:
+                self.data = [value]
+
+    def cat(self, value, cond=True):
+        if cond is False:
+            self.data += value
+        else:
+            for val in value:
+                self.append(val)

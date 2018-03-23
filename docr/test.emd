@@ -5,11 +5,11 @@ between character groups.
 
 ## Sub Sections ##
 
--  Bulleted lists
--  That are able to handel sub lists, or multiple paragraphs for every entry
-    based on the preceading whitespace.
-    1. Numbered lists
-    2. That are automatically enumerated.
+- Bulleted lists
+- That are able to handel sub lists, or multiple paragraphs for every entry
+  based on the preceading whitespace.
+  1. Numbered lists
+  2. That are automatically enumerated.
 
 Some ability to do **Bold** text and *italic* or _italic_ text would be good,
 aswell as combinations of the two. Also lets add in `inline` code, and $math$.
@@ -21,10 +21,10 @@ line
 ```
 
 code that can be based on the laguages specivied. Aswll as outof line math
-$$math equations and stuff$$.
+$$math equations and stuff$$. would be a good idea.
 
 $$$
-Here is some inline math!
+Here is some math block!!
 
 \frac{2b}{4c} = 92
 $$$
@@ -48,4 +48,9 @@ within it.
     by an optional title. On subsequent lines will be the content.
 
     This should also now have the ability to be multiple paragraphs.
+    1. Lets see if we can nest
+    2. Numbered lists in the admoniton
+       - And nest itemized lists in said numbered lists
+       - I will be amazed if this works!
 
+This will be some more code beyond the admoniton to break it.
